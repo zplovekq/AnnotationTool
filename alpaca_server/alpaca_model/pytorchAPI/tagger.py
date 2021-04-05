@@ -6,7 +6,7 @@ nlp = spacy.load('en_core_web_sm')
 
 class Tagger(object):
     """A alpaca_model API that tags input sentence.
-
+    aaaa
     Attributes:
         model: Model.
         preprocessor: Transformer. Preprocessing data for feature extraction.
