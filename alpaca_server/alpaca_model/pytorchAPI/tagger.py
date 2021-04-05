@@ -6,7 +6,6 @@ nlp = spacy.load('en_core_web_sm')
 
 class Tagger(object):
     """A alpaca_model API that tags input sentence.
-    aaaa
     Attributes:
         model: Model.
         preprocessor: Transformer. Preprocessing data for feature extraction.
@@ -17,7 +16,7 @@ class Tagger(object):
         self.preprocessor = preprocessor
         self.tokenizer = tokenizer
         self.usecuda = False
-
+    #     tokenenzier not use
     def predict_proba(self, text):
         """Probability estimates.
 
@@ -32,12 +31,12 @@ class Tagger(object):
             Returns the probability of the word for each class in the alpaca_model,
         """
         assert isinstance(text, str)
-        doc = nlp(text)
-        words = [token.text for token in doc]
+        # doc = nlp(text)
+        words = [token for token in text]
         dataset = prepare_dataset([words], None, self.preprocessor)
         testdata = create_batches(dataset, batch_size=1, str_words=True, tag_padded=False)
 
-
+        print(testdata)
         words = testdata[0]['words']
         chars = testdata[0]['chars']
         caps = testdata[0]['caps']
@@ -66,8 +65,8 @@ class Tagger(object):
         return tags
 
     def _build_response(self, sent, tags):
-        doc = nlp(sent)
-        words = [token.text for token in doc]
+        # doc = nlp(sent)
+        words = [token for token in sent]
         res = {
             'words': words,
             'entities': [
@@ -80,7 +79,7 @@ class Tagger(object):
         for chunk_type, chunk_start, chunk_end in chunks:
             chunk_end += 1
             entity = {
-                'text': ' '.join(words[chunk_start: chunk_end]),
+                'text': ''.join(words[chunk_start: chunk_end]),
                 'type': chunk_type,
                 'beginOffset': chunk_start,
                 'endOffset': chunk_end

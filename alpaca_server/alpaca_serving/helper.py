@@ -99,7 +99,7 @@ def get_args_parser():
                         help='maximum number of concurrent HTTP connections')
     group3.add_argument('-cors', type=str, default='*',
                         help='setting "Access-Control-Allow-Origin" for HTTP requests')
-    group3.add_argument('-num_worker', type=int, default=2,
+    group3.add_argument('-num_worker', type=int, default=1,
                         help='number of server instances')
     group3.add_argument('-batch_size', type=int, default=256,
                         help='batch size')
