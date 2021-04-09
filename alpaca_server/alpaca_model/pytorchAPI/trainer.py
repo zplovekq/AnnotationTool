@@ -30,6 +30,7 @@ class Trainer(object):
         word_count = 0
 
         self.model.train(True)
+        print("begin train")
         for epoch in range(1, num_epochs+1):
             train_batches = create_batches(train_data, batch_size= batch_size, order='random')
 
