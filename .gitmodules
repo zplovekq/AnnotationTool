@@ -1,0 +1,3 @@
+[submodule "annotation/AlpacaTag"]
+	path = annotation/AlpacaTag
+	url = https://github.com/zplovekq/Annotion
